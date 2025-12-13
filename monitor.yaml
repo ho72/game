@@ -1,0 +1,59 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: gateway-monitor
+  namespace: tacticai
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: mq-api-gateway
+  endpoints:
+  - port: http-api
+    path: /metrics
+    interval: 15s
+    bearerTokenSecret:
+      name: gateway-token
+      key: token
+  namespaceSelector:
+    matchNames:
+    - tacticai
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: game-server-monitor
+  namespace: tacticai
+  labels:
+    release: monitoring     # 프로메테우스가 찾을 수 있도록 라벨 필수
+spec:
+  selector:
+    matchLabels:
+      app: game-server      # 게임 서버 Service의 selector 라벨
+  endpoints:
+  - port: game-metrics      # 수정한 게임 서버 포트 이름
+    path: /metrics
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - tacticai
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: ai-server-monitor
+  namespace: tacticai
+  labels:
+    release: monitoring     # 라벨 필수
+spec:
+  selector:
+    matchLabels:
+      app: ai-server        # AI 서버 Service의 selector 라벨
+  endpoints:
+  - port: ai-metrics        # 수정한 AI 서버 포트 이름
+    path: /metrics
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - tacticai
