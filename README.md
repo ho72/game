@@ -77,8 +77,8 @@ flowchart LR
 게임 규칙 테스트, 서버 이미지 빌드, 클러스터 모니터링 연결은 필요한 환경이 다릅니다. [실행 안내](docs/SETUP.md)에서 단계별로 확인할 수 있습니다.
 
 ```bash
-git clone https://github.com/ho72/TacticAI-Monitoring.git
-cd TacticAI-Monitoring
+git clone https://github.com/ho72/tacticai-monitoring.git
+cd tacticai-monitoring
 ```
 
 현재 Helm Service 템플릿에는 `monitor.yaml`이 선택하는 **Service 라벨과 포트 이름이 없어**, 모니터링을 재현할 때 이 연결 조건을 먼저 맞춰야 합니다. 실행 안내는 이 조건과 외부 인프라·모델 준비 범위를 함께 설명합니다.
