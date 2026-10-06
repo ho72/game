@@ -7,8 +7,8 @@
 ## 저장소 받기
 
 ```bash
-git clone https://github.com/ho72/game.git
-cd game
+git clone https://github.com/ho72/TacticAI-Monitoring.git
+cd TacticAI-Monitoring
 ```
 
 ## 게임 규칙 테스트
